@@ -177,9 +177,67 @@ describe('Recipes', function() {
       });
   });
 
-  it('should add an item on POST');
+  let storedId;
+  it('should add an item on POST', function() {
+    const newItem = {
+      name: 'Big Milk',
+      ingredients: ['milk', 'milk', 'milk(2%)'],
+    };
+    return chai.request(app)
+      .post('/recipes')
+      .send(newItem)
+      .then(function(res) {
+        expect(res).to.have.a.status(201);
+        expect(res).to.be.json;
+        expect(res.body).to.be.a('object');
+        expect(res.body).to.include.keys(['name', 'id', 'ingredients']);
+        expect(res.body.id).to.not.equal(null);
 
-  it('should update items on PUT');
+        //Save for future tests
+        storedId = res.body.id;
+      });
+  });
 
-  it('should delete items on DELETE');
+  it('should update items on PUT', function() {
+    const updateItem = {
+      name: 'Big Milk',
+      ingredients: ['milk, milk, whole milk'],
+      id: storedId,
+    };
+    return chai.request(app)
+      .put(`/recipes/${storedId}`)
+      .send(updateItem)
+      .then(function(res) {
+        expect(res).to.have.a.status(204);
+      })
+      .then(function() {
+        return chai.request(app)
+          .get('/recipes');
+      })
+      .then(function(res) {
+        expect(res.body[res.body.length - 1]).to.deep.equal(updateItem);
+      });
+  });
+
+  it('should delete items on DELETE', function() {
+    const deletedItem = {
+      name: 'Big Milk',
+      ingredients: ['milk, milk, whole milk'],
+      id: storedId,
+    };
+    return chai.request(app)
+      .delete(`/recipes/${storedId}`)
+      .then(function(res) {
+        expect(res).to.have.a.status(204);
+      })
+      .then(function() {
+        return chai.request(app)
+          .get('/recipes');
+      })
+      .then(function(res) {
+        res.body.forEach(function(item) {
+          expect(item).does.not.deep.equal(deletedItem);
+        });
+      });
+  });
 });
