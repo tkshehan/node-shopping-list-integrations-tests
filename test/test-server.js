@@ -1,7 +1,7 @@
 const chai = require("chai");
 const chaiHttp = require("chai-http");
 
-const { app, runServer, closeServer } = require("../server");
+const {app, runServer, closeServer} = require("../server");
 
 // this lets us use *expect* style syntax in our tests
 // so we can do things like `expect(1 + 1).to.equal(2);`
@@ -66,7 +66,7 @@ describe("Shopping List", function() {
   //  2. inspect response object and prove it has right
   //  status code and that the returned object has an `id`
   it("should add an item on POST", function() {
-    const newItem = { name: "coffee", checked: false };
+    const newItem = {name: "coffee", checked: false};
     return chai
       .request(app)
       .post("/shopping-list")
@@ -80,7 +80,7 @@ describe("Shopping List", function() {
         // response should be deep equal to `newItem` from above if we assign
         // `id` to it from `res.body.id`
         expect(res.body).to.deep.equal(
-          Object.assign(newItem, { id: res.body.id })
+          Object.assign(newItem, {id: res.body.id})
         );
       });
   });
@@ -149,4 +149,20 @@ describe("Shopping List", function() {
         })
     );
   });
+});
+
+describe('Recipes', function() {
+
+  before(function() {
+    return runServer();
+  });
+
+  after(function() {
+    return closeServer();
+  });
+
+  it('should list items on GET');
+  it('should add an item on POST');
+  it('should update items on PUT');
+  it('should delete items on DELETE');
 });
