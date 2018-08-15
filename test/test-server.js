@@ -151,6 +151,7 @@ describe("Shopping List", function() {
   });
 });
 
+let storedId;
 describe('Recipes', function() {
 
   before(function() {
@@ -177,7 +178,6 @@ describe('Recipes', function() {
       });
   });
 
-  let storedId;
   it('should add an item on POST', function() {
     const newItem = {
       name: 'Big Milk',
