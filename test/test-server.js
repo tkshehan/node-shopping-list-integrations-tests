@@ -161,8 +161,25 @@ describe('Recipes', function() {
     return closeServer();
   });
 
-  it('should list items on GET');
+  it('should list items on GET', function() {
+    return chai.request(app)
+      .get('/recipes')
+      .then(function(res) {
+        expect(res).to.have.status(200);
+        expect(res).to.be.json;
+        expect(res.body).to.be.a('array');
+        expect(res.body.length).to.be.at.least(1);
+
+        const expectedKeys = ['name', 'id', 'ingredients'];
+        res.body.forEach(function(item) {
+          expect(item).to.include.all.keys(expectedKeys);
+        });
+      });
+  });
+
   it('should add an item on POST');
+
   it('should update items on PUT');
+
   it('should delete items on DELETE');
 });
