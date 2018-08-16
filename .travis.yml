@@ -4,7 +4,7 @@ deploy:
   provider: heroku
   api_key:
     secure: fASDPWbrZqVFpefZ3n2F231nl4em1Koxdqn63vxQisuJyvq8PT5QwnHQ0CBxq0t1tlb1avX/jeLvUyzOLyQ9Meeg86lPYAtyUNb9qVgNee5xcW15BQRVzQ+EKVfLPVsPmD+W3gVAoIregsW7k34UXWTo0HXy8LYzeNgmp9lZzuUkK6r6ftrI5rN/g6HStGOe6MjKG0A/VtPxvuCI54rBSnvt9fc57DCb/m9LVv3hqKMJO7GpROX9SyA7QWeVLXfjYD8lI2nb7agfjPW2DXgcZBuZFM+dk+gNLeyyemC8Z4TtKTBSJHvR+UJWdYz11d/80UHUvLORE1GtKpPcBGUxCnrfcYqfxRsBao+uqyadDu2o4Df7dhF9lhy742Hot0LC7UtGp62Zgh9kr2BnnAzyIqqz/136xrzzrvzTUZIa1tfc4dJUQh0I8USnGqpuAvzRx5jOleX283BMacUB1SdFT7wrBkkQIY4m8d2qZKuH3dPE64vfjLLmECkClU1q0NTmsQJwn8BXp9vdJu8e6/J9SHU2geiSUOifBEu/Ws6N5ianP7Z6LeEB9F9hsmQ+5GkeaTRk34BNHK2tPRtEY7aAMLVcamGxdlQ0CjQEJYBbhpyfPhHlTg63zX3HRoRH+35ASvGe6uzmUMax1m8bZ8nwAdjI7K6GDqDI2xaHpAHHjZs=
-  app: node-shopping-list-integrations-tests
+  app: arcane-mountain-97401
   on:
     repo: tkshehan/node-shopping-list-integrations-tests
     branch: tests-for-recipes
